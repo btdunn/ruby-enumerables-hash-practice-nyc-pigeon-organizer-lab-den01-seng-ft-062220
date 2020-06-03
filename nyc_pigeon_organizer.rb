@@ -1,12 +1,16 @@
 def nyc_pigeon_organizer(data)
   new_hash = {}
   
-  data.each do |a_name, a|
-    a.each do |a_value, names|
+  data.each do |attributes, value|
+    value.each do |info, names|
       names.each do |name|
-        new_hash[name] ||= {}
-        new_hash[name][a_name] ||= []
-        new_hash[name][a_name].push(a_value.to_s)
+        if new_hash[name] == nil
+          new_hash[name] = {}
+        end
+        if new_hash[name][attributes] == nil
+          new_hash[name][attributes] = []
+        end
+        new_hash[name][attributes].push(info.to_s)
       end
     end
   end
